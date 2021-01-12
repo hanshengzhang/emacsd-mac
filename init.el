@@ -12,7 +12,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (helm))))
+ '(package-selected-packages (quote (exec-path-from-shell auctex helm))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -24,3 +24,14 @@
 (helm-mode 1)
 (global-set-key (kbd "C-x C-f")                      'helm-find-files)
 (global-set-key (kbd "C-q")                          'helm-mini)
+
+(when (memq window-system '(mac ns))
+  (setenv "SHELL" "/bin/zsh")
+  (exec-path-from-shell-initialize)
+  (exec-path-from-shell-copy-envs
+   '("PATH")))
+
+
+(setq-default TeX-engine 'xetex)
+(setq-default TeX-PDF-mode t)
+
