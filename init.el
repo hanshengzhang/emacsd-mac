@@ -12,7 +12,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (exec-path-from-shell auctex helm))))
+ '(package-selected-packages (quote (markdown-mode exec-path-from-shell auctex helm))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -34,4 +34,6 @@
 
 (setq-default TeX-engine 'xetex)
 (setq-default TeX-PDF-mode t)
+
+(setq backup-directory-alist '(("." . "~/.emacs.d/backup-files")))
 
