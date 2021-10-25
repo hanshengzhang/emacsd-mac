@@ -14,7 +14,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (graphviz-dot-mode markdown-mode exec-path-from-shell auctex helm))))
+    (dracula-theme graphviz-dot-mode markdown-mode exec-path-from-shell auctex helm))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -23,9 +23,15 @@
  ;; If there is more than one, they won't work right.
  )
 
+;; set theme to dracula-theme
+;; source https://github.com/dracula/emacs/blob/master/INSTALL.md
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+(load-theme 'dracula t)
+
 (helm-mode 1)
 (global-set-key (kbd "C-x C-f")                      'helm-find-files)
 (global-set-key (kbd "C-q")                          'helm-mini)
+
 
 (when (memq window-system '(mac ns))
   (setenv "SHELL" "/bin/zsh")
