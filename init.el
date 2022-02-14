@@ -43,5 +43,26 @@
 (setq-default TeX-engine 'xetex)
 (setq-default TeX-PDF-mode t)
 
+;;https://shengdie.github.io/2017/05/29/Mac-Emacs-Skim/
+(setq TeX-view-program-list
+      '(("PDF Viewer" "/Applications/Skim.app/Contents/SharedSupport/displayline -r -b -g %n %o %b"))) ;; setup skim params
+
+(eval-after-load 'tex
+  '(progn
+     (assq-delete-all 'output-pdf TeX-view-program-selection)
+     (add-to-list 'TeX-view-program-selection '(output-pdf "PDF Viewer")))) ;; change viewer 
+
+(add-hook 'LaTeX-mode-hook
+          #'(lambda ()
+	      (add-to-list 'TeX-command-list '("LaTeX" "%`xelatex -synctex=1%(mode)%' %t" TeX-run-TeX nil t))
+              (setq TeX-command-extra-options "-file-line-error -shell-escape")
+              (setq TeX-save-query  nil ) ;; 不需要保存即可编译
+              ))
+
+(custom-set-variables
+ '(TeX-source-correlate-method 'synctex)
+ '(TeX-source-correlate-mode t)
+ '(TeX-source-correlate-start-server t))
+
 (setq backup-directory-alist '(("." . "~/.emacs.d/backup-files")))
 
