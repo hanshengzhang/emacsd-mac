@@ -17,7 +17,7 @@
 ;;; Code:
 (deftheme dracula)
 
-
+
 ;;;; Configuration options:
 
 (defgroup dracula nil
@@ -598,12 +598,9 @@ read it before opening a new issue about your will.")
                (org-document-title :weight bold :foreground ,dracula-orange
                                    ,@(when dracula-enlarge-headings
                                        (list :height dracula-height-doc-title)))
-               (org-done :foreground ,dracula-green)
                (org-ellipsis :foreground ,dracula-comment)
                (org-footnote :foreground ,other-blue)
                (org-formula :foreground ,dracula-pink)
-               (org-headline-done :foreground ,dracula-comment
-                                  :weight normal :strike-through t)
                (org-hide :foreground ,dracula-bg :background ,dracula-bg)
                (org-level-1 :inherit bold :foreground ,dracula-pink
                             ,@(when dracula-enlarge-headings
